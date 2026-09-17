@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+# © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+import os
+import sys
+_here = os.path.dirname(os.path.abspath(__file__))
+for c in (os.path.join(_here, "..", "src"), os.path.join(_here, "..", "lib")):
+    if os.path.isdir(os.path.join(c, "ertabat")):
+        sys.path.insert(0, os.path.abspath(c))
+        break
+from ertabat.cli import main
+sys.exit(main())

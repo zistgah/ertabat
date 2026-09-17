@@ -1,0 +1,7 @@
+{
+  "base": "INR",
+  "date": "",
+  "source": "",
+  "rates": {},
+  "note": "A rate without a date and a source is not a declaration. Fill all four fields before passing this with --fx; load_fx raises if any is missing."
+}

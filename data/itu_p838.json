@@ -1,0 +1,8 @@
+{
+  "recommendation": "ITU-R P.838-3",
+  "columns": ["freq_ghz", "k_h", "alpha_h", "k_v", "alpha_v"],
+  "rows": [],
+  "populated_by": "",
+  "retrieved_utc": "",
+  "note": "Empty on purpose. Populate from the recommendation text, then fill in populated_by and retrieved_utc. Four skipped tests in tests/test_atmosphere.py start running the moment rows exist. See packet ATM-1."
+}

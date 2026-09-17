@@ -1,0 +1,11 @@
+ref,mpn,qty,manufacturer,description,subsystem,alternates
+A1,RTL-SDR-BLOG-V3,1,RTL-SDR Blog,RTL2832U + R820T2 receiver 500 kHz - 1.766 GHz,receiver,NESDR-XTR
+A2,LNA4ALL,1,Adam Farson,Wideband low-noise amplifier for the front end,receiver,SPF5189Z-LNA
+A3,SAWBIRD-PLUS-NOAA,1,NooElec,SAW filtered LNA for the 137 MHz band,receiver,
+A4,BIAS-TEE-INLINE,1,generic,Inline bias tee to power the LNB down the coax,receiver,
+A5,KU-LNBF-UNIVERSAL,1,generic,Universal Ku-band LNBF downconverter 10.7-12.75 GHz,downconverter,
+A6,DISH-60CM-OFFSET,1,generic,60 cm offset reflector,antenna,DISH-90CM-OFFSET
+A7,YAESU-G-5500DC,1,Yaesu,Azimuth and elevation rotator for tracking,tracking,
+A8,ARDUINO-NANO-EVERY,1,Arduino,Rotator controller bridging Hamlib to the rotator,tracking,ESP32-DEVKITC-V4
+A9,RG402-SEMIRIGID-1M,2,generic,Low-loss semi-rigid coax jumper,cabling,LMR-400-1M
+A10,GPSDO-10MHZ,1,generic,GPS disciplined 10 MHz reference for NTN timing,timing,

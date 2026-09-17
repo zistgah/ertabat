@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+bom/.price-cache.json
+bom/prices.csv
+.venv/

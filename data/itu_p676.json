@@ -1,0 +1,8 @@
+{
+  "recommendation": "ITU-R P.676",
+  "columns": ["freq_ghz", "gamma_o_db_km", "gamma_w_db_km_per_g_m3"],
+  "rows": [],
+  "populated_by": "",
+  "retrieved_utc": "",
+  "note": "Empty on purpose. See packet ATM-2."
+}

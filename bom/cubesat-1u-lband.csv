@@ -1,0 +1,11 @@
+ref,mpn,qty,manufacturer,description,subsystem,alternates
+P1,1U-STRUCTURE-AL6061,1,generic,1U primary structure machined from Al 6061-T6,structure,
+P2,EPS-1U-BOARD,1,generic,Electrical power system board with battery management,power,
+P3,LI-ION-18650-SPACE,4,generic,Cells qualified for vacuum and thermal cycling,power,
+P4,SOLAR-PANEL-1U-TJ,4,generic,Triple-junction body-mounted panel,power,
+P5,OBC-ARM-CORTEX-M7,1,generic,On-board computer,avionics,
+P6,LBAND-TRANSCEIVER-PAYLOAD,1,generic,L-band transceiver payload 1-2 GHz,payload,
+P7,PATCH-ANTENNA-LBAND,2,generic,L-band patch antenna,payload,
+P8,MAGNETORQUER-SET,1,generic,Three-axis magnetorquer set,adcs,
+P9,SUN-SENSOR-COARSE,6,generic,Coarse sun sensor,adcs,
+P10,DEPLOYMENT-SWITCH,2,generic,Separation switch,mechanisms,

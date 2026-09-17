@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ertabat — the link</title>
+<meta name="description" content="A communication-engineering spine for space and non-terrestrial radio: link budgets, Doppler, NTN timing, O-RAN splits, radio HAL, and BoM pricing.">
+<style>
+  :root{
+    --paper:#f1f3f2; --ink:#14201e; --soft:#54615e; --rule:#c4cdca;
+    --plum:#6b2d5c; --panel:#e7ebe9;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#14201e; --ink:#eceeed; --soft:#9fada9; --rule:#33413e;
+           --plum:#d99ac6; --panel:#1b2927; }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:17px/1.65 Georgia,"Iowan Old Style","Times New Roman",serif;
+  }
+  .wrap{max-width:46rem;margin:0 auto;padding:3.5rem 1.25rem 5rem}
+  h1{font-size:1.9rem;line-height:1.15;margin:0 0 .2rem;font-weight:400;letter-spacing:.01em}
+  h1 .script{font-family:system-ui,sans-serif;color:var(--plum)}
+  h2{font-size:1.15rem;font-weight:700;margin:2.75rem 0 .6rem;letter-spacing:.005em}
+  p{margin:0 0 1rem;max-width:36em}
+  .lede{color:var(--soft);margin-bottom:2.25rem}
+  a{color:var(--plum)}
+  code,kbd,pre,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .readout{
+    border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);
+    padding:1.1rem 0 .4rem; margin:0 0 1.5rem;
+  }
+  .readout .cap{
+    font:400 .82rem/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:var(--soft); margin-bottom:.9rem;
+  }
+  .row{display:flex;gap:1rem;align-items:baseline;justify-content:space-between;
+       border-bottom:1px solid var(--rule);padding:.42rem 0}
+  .row:last-child{border-bottom:0}
+  .row .k{font-size:.94rem;color:var(--soft);flex:1 1 auto}
+  .row .v{font:600 1.05rem/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;
+          color:var(--plum);white-space:nowrap}
+  table{border-collapse:collapse;width:100%;font-size:.94rem;margin:.4rem 0 1.2rem}
+  th,td{text-align:left;padding:.45rem .5rem .45rem 0;border-bottom:1px solid var(--rule);
+        vertical-align:top}
+  th{font-weight:700;font-size:.84rem;color:var(--soft)}
+  pre{background:var(--panel);padding:.85rem 1rem;overflow-x:auto;font-size:.85rem;
+      border-left:2px solid var(--rule);margin:0 0 1.2rem}
+  ul{padding-left:1.1rem;max-width:36em}
+  li{margin:.3rem 0}
+  footer{margin-top:3.5rem;padding-top:1.1rem;border-top:1px solid var(--rule);
+         color:var(--soft);font-size:.86rem}
+  .absent{color:var(--soft);font-style:italic}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>ertabat <span class="script">ارتباط</span></h1>
+  <p class="lede">The link. A communication-engineering spine for space and
+  non-terrestrial radio &mdash; and a working answer to the question of what a
+  textbook leaves out when the base station is moving at seven and a half
+  kilometres a second.</p>
+
+  <div class="readout">
+    <div class="cap">ertabat pass --altitude-km 550 --freq-mhz 437 --beamwidth-deg 40<br>
+    ertabat ntn --altitude-km 550 --elevation-deg 10</div>
+    <div class="row"><span class="k">Doppler shift at 437 MHz</span><span class="v">±10.2 kHz</span></div>
+    <div class="row"><span class="k">Doppler rate at closest approach</span><span class="v">134 Hz/s</span></div>
+    <div class="row"><span class="k">Pass, horizon to horizon at 10°</span><span class="v">8 min 31 s</span></div>
+    <div class="row"><span class="k">Round trip, regenerative</span><span class="v">12.11 ms</span></div>
+    <div class="row"><span class="k">HARQ processes needed / available</span><span class="v">25 / 16</span></div>
+    <div class="row"><span class="k">TDD guard period needed</span><span class="v">4.22 ms</span></div>
+    <div class="row"><span class="k">Handover interval, 40° beam</span><span class="v">61 s</span></div>
+    <div class="row"><span class="k">Option 8 fronthaul, 20 MHz × 2 ports</span><span class="v">2.58 Gbit/s</span></div>
+  </div>
+
+  <p>Those are outputs, not claims. Each one comes from a function with a test
+  beside it, and changing the altitude changes all of them at once.</p>
+
+  <h2>What breaks, and where it is computed</h2>
+  <table>
+    <tr><th>The terrestrial assumption</th><th>What orbit does to it</th><th>Module</th></tr>
+    <tr><td>The carrier sits still</td><td>Tens of kilohertz of shift at L-band, hundreds at Ku, moving fast enough to smear subcarriers into each other</td><td class="mono">link.geometry</td></tr>
+    <tr><td>Delay is a rounding error</td><td>Six milliseconds each way, and twice that again if the gNB stayed on the ground</td><td class="mono">ntn.timing</td></tr>
+    <tr><td>A guard period covers the cell</td><td>It would have to cover 4.2 ms, so uplink and downlink take separate spectrum</td><td class="mono">ntn.duplex</td></tr>
+    <tr><td>An acknowledgement arrives in time</td><td>It does not; sixteen HARQ processes stall where twenty-five are needed</td><td class="mono">ntn.timing</td></tr>
+    <tr><td>Random access reaches within the cyclic prefix</td><td>Only with GNSS pre-compensation and a broadcast common timing advance</td><td class="mono">ntn.timing</td></tr>
+    <tr><td>The user moves and the tower does not</td><td>Inverted: the footprint crosses the user, and hands over every minute</td><td class="mono">link.geometry</td></tr>
+    <tr><td>Fronthaul is a cable in a cabinet</td><td>Raw I/Q needs gigabits of feeder link for twenty megahertz of service</td><td class="mono">ntn.oran</td></tr>
+  </table>
+
+  <h2>Pricing a build</h2>
+  <p>A bill of materials is a CSV; <code>ertabat bom</code> prices it against
+  distributor APIs &mdash; Nexar, Mouser, element14, DigiKey &mdash; or against a
+  local price book when you would rather not hold an account anywhere.</p>
+<pre>ertabat bom bom/cubesat-1u-lband.csv --currency INR --out-md BOM.md</pre>
+  <p>Keys are paths to files, never flags. A line nobody could price stays
+  unpriced and blocks the combined total, because a total over the priced half of
+  a bill of materials reads as the cost of the build. A bill quoted in two
+  currencies has no total until you supply an exchange rate that names its source
+  and its date.</p>
+
+  <h2>What is deliberately missing</h2>
+  <ul>
+    <li><span class="absent">The ITU-R rain and gaseous-absorption tables are empty</span>, so every Ku and Ka figure comes back as an unknown with the recommendation number attached.</li>
+    <li><span class="absent">No radio driver is bound</span>; every device is a stub that refuses to produce samples rather than returning zeros that look like a quiet band.</li>
+    <li><span class="absent">The five state-of-the-art tracks sit at SPEC</span> &mdash; neuromorphic on-board processing, optical inter-satellite links, cell-free MIMO across a swarm, semantic transmission, and quantum key distribution. Promotion needs evidence in the tree, and the tool refuses without it.</li>
+  </ul>
+  <p>Each absence carries a work packet with inputs, an interface and the command
+  that decides whether the work is finished:</p>
+<pre>ertabat doctor      # what is absent right now
+ertabat dispatch    # the packets that fill it</pre>
+
+  <footer>
+    Part of the Zistgah estate, beside <span class="mono">zasab</span> (اعصاب),
+    the element that moves the metal.<br>
+    © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+  </footer>
+</div>
+</body>
+</html>

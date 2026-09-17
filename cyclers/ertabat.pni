@@ -1,0 +1,91 @@
+REM ertabat — take one package from roadmap/packages.json to a proof
+REM targets PANINI spec as published at zistgah/panini
+CYCLER "ertabat"
+TITLE "One package, one proof"
+OUTPUT KIND LINK
+RESOLUTION MID
+
+STAGE CONCEPT
+  VERB CREATE
+  SHAPE TEXT
+  ASK <<
+    Name the package id you are taking, and state in one sentence what will be TRUE
+    when it is done that is not true now.
+    Then state what is physically present: the radio by model, the antenna, the cable,
+    the computer. If nothing is present, say so — a package proven only against the
+    mock is a real result, and calling it a hardware result is not.
+  >>
+  EXPECT TEXT
+  VALIDATE "names one package id and the hardware present, or says none"
+END STAGE
+
+STAGE BOUNDS
+  VERB MEASURE
+  SHAPE JSON
+  ASK <<
+    Which conformance conditions does this package touch? For each, copy the criterion
+    and its unit from conformance/conditions.json verbatim.
+    If a condition you touch reads 'not established', you may not establish it by
+    assumption. Either measure it in this package or leave it unjudged and say so.
+    State the band and power if anything transmits, and the authorisation under which
+    it may be used. No authorisation, no transmit.
+  >>
+  EXPECT JSON
+END STAGE
+
+STAGE IMPLEMENT
+  VERB CREATE
+  SHAPE TEXT
+  ASK <<
+    Write only inside the paths this package owns. Every interface function the
+    substrate cannot perform returns the unsupported code.
+    Do not touch another package's paths. If you find you need to, stop and say which
+    package you actually have.
+  >>
+  EXPECT TEXT
+END STAGE
+
+STAGE EXECUTE
+  VERB EXECUTE
+  SHAPE TEXT
+  ASK <<
+    Run the package's acceptance commands, exactly as written in roadmap/packages.json.
+    Paste the output verbatim, including failures.
+    A command you did not run is reported as not run.
+  >>
+  EXPECT TEXT
+END STAGE
+
+STAGE MEASURE
+  VERB MEASURE
+  SHAPE DATA
+  ASK <<
+    Attach the captured measurement: instrument, timestamp, method, raw values.
+    If you are about to write a comparative word — faster, better, optimal — give the
+    two numbers it compares. Without both numbers, delete the word.
+  >>
+  EXPECT DATA
+END STAGE
+
+STAGE FALSIFY
+  VERB FALSIFY
+  SHAPE TEXT
+  ASK <<
+    State the condition under which this result would be wrong, and whether you tested
+    it. Name the terrestrial assumption you may have carried in without noticing:
+    a fixed delay, a stationary far end, a duplexing scheme that needs slot alignment.
+  >>
+  EXPECT TEXT
+END STAGE
+
+STAGE INTEGRATE
+  VERB INTEGRATE
+  SHAPE TEXT
+  ASK <<
+    Which of the four attachment points did this cross, and did it stay inside them?
+    If you reached for a fifth path, say so plainly — that is a contract question, and
+    it is not yours to settle silently.
+  >>
+  EXPECT TEXT
+  GATE "PROOF accepted"
+END STAGE

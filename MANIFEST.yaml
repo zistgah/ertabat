@@ -1,0 +1,22 @@
+element: ertabat
+script: ارتباط
+gloss: the link
+class: library+tool
+estate: zistgah
+author: Abhishek Choudhary
+affiliation: AyeAI
+orcid: 0009-0002-0684-8320
+copyright: "© 1993–2026 Abhishek Choudhary. All rights reserved."
+version: 0.1.0
+status: incubating
+doi: null            # not minted; minting is a typed gate on his machine
+siblings:
+  - dhancha          # the spine these primitives were extracted into
+  - zasab            # device control — the nerve
+  - governance       # contract, zops, seal
+  - misty-doi        # publication path
+declared_absences:
+  - data/itu_p838.json   # rain coefficients — packet ATM-1
+  - data/itu_p676.json   # gaseous absorption — packet ATM-2
+  - sgp4                 # TLE propagation declares itself absent
+  - radio drivers        # every device is a stub until one is bound
