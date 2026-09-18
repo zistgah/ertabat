@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "http://datacite.org/schema/kernel-4",
+  "types": {
+    "resourceTypeGeneral": "Software",
+    "resourceType": "software"
+  },
+  "titles": [
+    {
+      "title": "ertabat — a communication engineering domain on the dhancha spine"
+    }
+  ],
+  "creators": [
+    {
+      "name": "Choudhary, Abhishek",
+      "nameType": "Personal",
+      "givenName": "Abhishek",
+      "familyName": "Choudhary",
+      "affiliation": [
+        {
+          "name": "AyeAI"
+        }
+      ],
+      "nameIdentifiers": [
+        {
+          "nameIdentifier": "https://orcid.org/0009-0002-0684-8320",
+          "nameIdentifierScheme": "ORCID",
+          "schemeUri": "https://orcid.org"
+        }
+      ]
+    }
+  ],
+  "publisher": "Zenodo",
+  "publicationYear": "2026",
+  "subjects": [
+    {
+      "subject": "communication engineering"
+    },
+    {
+      "subject": "non-terrestrial networks"
+    },
+    {
+      "subject": "software defined radio"
+    },
+    {
+      "subject": "Doppler"
+    },
+    {
+      "subject": "link budget"
+    },
+    {
+      "subject": "FAKIR"
+    },
+    {
+      "subject": "Zistgah"
+    }
+  ],
+  "version": "0.1.0",
+  "descriptions": [
+    {
+      "description": "A FAKIR domain for communication engineering: one capability surface for a link whose geometry is changing, conformance conditions with UCUM units (two honestly unestablished), a closed four-point integration boundary, a priced bill of materials that refuses a total over the priced subset, and work packets with executable acceptance criteria.",
+      "descriptionType": "Abstract"
+    }
+  ],
+  "rightsList": [
+    {
+      "rights": "Apache-2.0",
+      "rightsIdentifier": "Apache-2.0",
+      "rightsIdentifierScheme": "SPDX"
+    }
+  ],
+  "language": "eng",
+  "relatedIdentifiers": [
+    {
+      "relatedIdentifier": "https://github.com/zistgah/ertabat/tree/fb8a308874a3430f83fb929e1c9a3c4b21dd8db0",
+      "relationType": "IsSupplementTo",
+      "relatedIdentifierType": "URL"
+    }
+  ]
+}

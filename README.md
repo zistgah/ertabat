@@ -70,3 +70,5 @@ who did it and when, and four skipped tests start running.
 
     bash ops/verify.sh      # ten contract checks
     bash ops/selftest.sh    # runs the suite AND proves the gates still refuse
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22821651.svg)](https://doi.org/10.5281/zenodo.22821651)

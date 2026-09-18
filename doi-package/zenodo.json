@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "title": "ertabat — a communication engineering domain on the dhancha spine",
+    "version": "0.1.0",
+    "upload_type": "software",
+    "description": "A FAKIR domain for communication engineering: one capability surface for a link whose geometry is changing, conformance conditions with UCUM units (two honestly unestablished), a closed four-point integration boundary, a priced bill of materials that refuses a total over the priced subset, and work packets with executable acceptance criteria.",
+    "license": "Apache-2.0",
+    "access_right": "open",
+    "language": "eng",
+    "creators": [
+      {
+        "name": "Choudhary, Abhishek",
+        "affiliation": "AyeAI",
+        "orcid": "0009-0002-0684-8320"
+      }
+    ],
+    "keywords": [
+      "communication engineering",
+      "non-terrestrial networks",
+      "software defined radio",
+      "Doppler",
+      "link budget",
+      "FAKIR",
+      "Zistgah"
+    ],
+    "related_identifiers": [
+      {
+        "relation": "isSupplementTo",
+        "identifier": "https://github.com/zistgah/ertabat/tree/fb8a308874a3430f83fb929e1c9a3c4b21dd8db0",
+        "scheme": "url"
+      }
+    ]
+  }
+}

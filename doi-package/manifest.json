@@ -1,0 +1,26 @@
+{
+  "title": "ertabat — a communication engineering domain on the dhancha spine",
+  "version": "0.1.0",
+  "doi": null,
+  "license": "Apache-2.0",
+  "artifacts": [
+    {
+      "name": "ertabat-0.1.0-fb8a308874a3430f83fb929e1c9a3c4b21dd8db0.tar.gz",
+      "size": 69383,
+      "sha256": "13206ff8c8f70b48ec4b80ff83ebb44701760c3a66301431c67bf7fb038d61f1"
+    }
+  ],
+  "metadata_files": [
+    "metadata.json",
+    "zenodo.json",
+    "datacite.json",
+    "codemeta.json",
+    "CITATION.cff"
+  ],
+  "reproducibility": {
+    "checksums": {
+      "ertabat-0.1.0-fb8a308874a3430f83fb929e1c9a3c4b21dd8db0.tar.gz": "13206ff8c8f70b48ec4b80ff83ebb44701760c3a66301431c67bf7fb038d61f1"
+    },
+    "tool": "misty-doi"
+  }
+}
